@@ -1,0 +1,252 @@
+/* Khung chính của Popup */
+.cookie-popup {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 460px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    z-index: 9999;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+        opacity 0.3s ease-in-out,
+        border-radius 0.4s ease,
+        width 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+        height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: translateY(0);
+    opacity: 1;
+    overflow: hidden;
+}
+
+/* Khi ẩn hoàn toàn (chuẩn bị kéo xuống) */
+.cookie-popup.slide-down {
+    transform: translateY(120%) scale(0.9);
+    opacity: 0;
+}
+
+/* TRẠNG THÁI THU NHỎ (MINIMIZED) */
+.cookie-popup.minimized {
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cookie-popup.minimized .cookie-text,
+.cookie-popup.minimized .cookie-toggle-icon,
+.cookie-popup.minimized .cookie-body {
+    display: none !important;
+}
+
+.cookie-popup.minimized .cookie-header {
+    margin-bottom: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.cookie-popup.minimized .cookie-icon {
+    font-size: 28px;
+    transform: scale(1.1);
+}
+
+/* Phần Header */
+.cookie-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.cookie-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cookie-icon {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.cookie-toggle-icon {
+    color: #6b7280;
+    transition: transform 0.3s ease;
+}
+
+/* Nội dung */
+.cookie-body {
+    display: block;
+}
+
+.cookie-desc {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.cookie-list-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.cookie-warning {
+    font-size: 13px;
+    color: #2563eb;
+    font-style: italic;
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+/* List cookies */
+.cookie-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.cookie-item:last-child {
+    border-bottom: none;
+}
+
+.cookie-item-text {
+    font-size: 14px;
+    color: #374151;
+    padding-right: 16px;
+}
+
+/* Toggle Button */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cbd5e1;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #b91c1c;
+}
+
+input:checked+.slider:before {
+    transform: translateX(20px);
+}
+
+input:disabled+.slider {
+    background-color: #e38286;
+    cursor: not-allowed;
+}
+
+.cookie-footer-link {
+    font-size: 13px;
+    color: #4b5563;
+    margin: 16px 0;
+    line-height: 1.5;
+}
+
+.cookie-footer-link a {
+    color: #b91c1c;
+    text-decoration: underline;
+}
+
+/* Buttons */
+.cookie-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.cookie-popup .btn {
+    flex: 1;
+    padding: 10px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    transition: all 0.2s;
+}
+
+.cookie-popup .btn-outline {
+    background-color: transparent;
+    border: 1px solid #d1d5db;
+    color: #111827;
+}
+
+.cookie-popup .btn-outline:hover {
+    background-color: #f3f4f6;
+}
+
+.cookie-popup .btn-primary {
+    background-color: #b91c1c;
+    color: white;
+}
+
+.cookie-popup .btn-primary:hover {
+    background-color: #991b1b;
+}
+
+@media (max-width: 480px) {
+    .cookie-popup {
+        width: calc(100% - 32px);
+        left: 16px;
+        bottom: 16px;
+        padding: 16px;
+    }
+
+    .cookie-popup.minimized {
+        width: 60px;
+        height: 60px;
+        padding: 0;
+    }
+
+    /* Chỉnh 3 nút hiển thị dạng cột trên mobile cho dễ bấm */
+    .cookie-actions {
+        flex-direction: column; 
+        gap: 8px;
+    }
+}
