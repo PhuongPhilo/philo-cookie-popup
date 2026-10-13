@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Philo Cookie Popup Elementor
- * Description: Plugin cung cấp Widget kéo thả thông báo Cookie cho Elementor.
- * Version: 1.0.0
+ * Description: Plugin hiển thị thông báo Cookie có hỗ trợ widget cho Elementor.
+ * Version: 1.0.2
  * Author: Philo Creative
  * Text Domain: philo-cookie
  * Domain Path: /languages
@@ -12,6 +12,8 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+
+define('PHILO_COOKIE_VERSION', '1.0.2');
 
 // Load Text Domain để hỗ trợ đa ngôn ngữ
 add_action('plugins_loaded', 'philo_cookie_load_textdomain');
@@ -27,10 +29,10 @@ function philo_cookie_load_textdomain() {
 function philo_cookie_enqueue_scripts()
 {
     // Nạp file CSS
-    wp_enqueue_style('philo-cookie-style', plugin_dir_url(__FILE__) . 'assets/css/style.css', array(), '1.0.2');
+    wp_enqueue_style('philo-cookie-style', plugin_dir_url(__FILE__) . 'assets/css/style.css', array(), PHILO_COOKIE_VERSION);
 
     // Nạp file JS (để ở footer)
-    wp_enqueue_script('philo-cookie-script', plugin_dir_url(__FILE__) . 'assets/js/script.js', array(), '1.0.2', true);
+    wp_enqueue_script('philo-cookie-script', plugin_dir_url(__FILE__) . 'assets/js/script.js', array(), PHILO_COOKIE_VERSION, true);
 }
 // Móc (Hook) hàm trên vào WordPress
 add_action('wp_enqueue_scripts', 'philo_cookie_enqueue_scripts');
