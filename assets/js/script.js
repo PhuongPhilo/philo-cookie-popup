@@ -44,9 +44,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Kiểm tra xem đã từng xác nhận chưa, nếu rồi thì ẩn popup đi
     const cookieConsent = getCookie("philo_cookie_consent");
-    if (cookieConsent) {
-        popup.style.display = 'none';
-        return; 
+    if (!cookieConsent) {
+        // Trì hoãn 100ms để hiệu ứng transition CSS hoạt động mượt mà sau khi DOM tải
+        setTimeout(() => {
+            popup.classList.add('show-popup');
+        }, 100);
     }
 
     // --- XỬ LÝ HIỆU ỨNG THU NHỎ/PHÓNG TO ---
@@ -71,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnAcceptAll = document.getElementById('btnCookieAcceptAll');
 
     function closePopupWithAnimation() {
+        popup.classList.remove('show-popup');
         popup.classList.add('slide-down');
         setTimeout(() => {
             popup.style.display = 'none';

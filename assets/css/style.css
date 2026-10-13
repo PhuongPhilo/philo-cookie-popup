@@ -17,6 +17,14 @@
     transform: translateY(0);
     opacity: 1;
     overflow: hidden;
+
+    /* Class dùng để JS kích hoạt hiển thị */
+    .cookie-popup.show-popup {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
 }
 
 /* Khi ẩn hoàn toàn (chuẩn bị kéo xuống) */
