@@ -27,10 +27,10 @@ function philo_cookie_load_textdomain() {
 function philo_cookie_enqueue_scripts()
 {
     // Nạp file CSS
-    wp_enqueue_style('philo-cookie-style', plugin_dir_url(__FILE__) . 'assets/css/style.css', array(), '1.0.1');
+    wp_enqueue_style('philo-cookie-style', plugin_dir_url(__FILE__) . 'assets/css/style.css', array(), '1.0.2');
 
     // Nạp file JS (để ở footer)
-    wp_enqueue_script('philo-cookie-script', plugin_dir_url(__FILE__) . 'assets/js/script.js', array(), '1.0.1', true);
+    wp_enqueue_script('philo-cookie-script', plugin_dir_url(__FILE__) . 'assets/js/script.js', array(), '1.0.2', true);
 }
 // Móc (Hook) hàm trên vào WordPress
 add_action('wp_enqueue_scripts', 'philo_cookie_enqueue_scripts');
